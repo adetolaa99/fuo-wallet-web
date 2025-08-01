@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { Loader, Lock, Eye, EyeOff } from "lucide-react";
 import { API_URL } from "../config/api";
 import "./AuthPages.css";
@@ -41,7 +41,7 @@ const ResetPasswordPage = () => {
     setError("");
 
     try {
-      const response = await axios.post(`${API_URL}/users/reset-password`, {
+      const response = await axiosInstance.post(`${API_URL}/users/reset-password`, {
         token,
         newPassword: values.newPassword,
       });

@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Loader } from "lucide-react";
 import MainLayout from "../components/layout/MainLayout";
 import SignInPage from "../pages/SignInPage";
 import SignUpPage from "../pages/SignUpPage";
@@ -13,7 +14,23 @@ import TransferPage from "../pages/TransferPage";
 import TransactionPage from "../pages/TransactionPage";
 
 const AppRoutes = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          backgroundColor: "#f5f5f5",
+        }}
+      >
+        <Loader className="spinner" size={40} />
+      </div>
+    );
+  }
 
   return (
     <Routes>

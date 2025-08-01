@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Loader, RefreshCw, Wallet, DollarSign } from "lucide-react";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { useAuth } from "../context/AuthContext";
 import { API_URL } from "../config/api";
 
@@ -25,13 +25,8 @@ const BalancePage = () => {
     }
 
     try {
-      const response = await axios.get(
-        `${API_URL}/stellar/check-balance/${profile.stellarPublicKey}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const response = await axiosInstance.get(
+        `${API_URL}/stellar/check-balance/${profile.stellarPublicKey}`
       );
       setBalances(response.data.balances || []);
       setError(null);

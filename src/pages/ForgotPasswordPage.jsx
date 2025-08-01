@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { Loader, Mail, ArrowLeft } from "lucide-react";
 import { API_URL } from "../config/api";
 import "./AuthPages.css";
@@ -23,7 +23,7 @@ const ForgotPasswordPage = () => {
     setError("");
 
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         `${API_URL}/users/send-reset-password-email`,
         values
       );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { Eye, EyeOff, Loader } from "lucide-react";
 import { API_URL } from "../config/api";
 import "./AuthPages.css";
@@ -29,7 +29,10 @@ const SignUpPage = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post(`${API_URL}/users/signup`, values);
+      const response = await axiosInstance.post(
+        `${API_URL}/users/signup`,
+        values
+      );
       console.log(response.data);
       // Show success message and redirect to sign in
       alert("Account created successfully! Please sign in.");
@@ -56,9 +59,7 @@ const SignUpPage = () => {
             className="auth-logo"
           />
           <h1 className="auth-title">Create Your Account</h1>
-          <p className="auth-subtitle">
-            Welcome to FUO Wallet
-          </p>
+          <p className="auth-subtitle">Welcome to FUO Wallet</p>
         </div>
 
         <Formik

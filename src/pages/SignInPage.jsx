@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { Eye, EyeOff, Loader } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { API_URL } from "../config/api";
@@ -26,7 +26,10 @@ const SignInPage = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post(`${API_URL}/users/login`, values);
+      const response = await axiosInstance.post(
+        `${API_URL}/users/login`,
+        values
+      );
       const { token, profile } = response.data;
       login(token, profile);
       navigate("/dashboard");

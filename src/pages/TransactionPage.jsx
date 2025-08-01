@@ -7,7 +7,7 @@ import {
   ArrowDownLeft,
   Copy,
 } from "lucide-react";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../context/AuthContext";
 import { API_URL } from "../config/api";
@@ -34,13 +34,8 @@ const TransactionPage = () => {
         throw new Error("User ID not found in token");
       }
 
-      const response = await axios.get(
-        `${API_URL}/stellar/transactions/${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const response = await axiosInstance.get(
+        `${API_URL}/stellar/transactions/${userId}`
       );
 
       setTransactions(response.data || []);

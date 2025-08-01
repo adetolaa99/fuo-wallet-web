@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Loader, Send, AlertCircle, CheckCircle } from "lucide-react";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { useAuth } from "../context/AuthContext";
 import { API_URL } from "../config/api";
 
@@ -34,18 +34,10 @@ const TransferPage = () => {
     setSuccess("");
 
     try {
-      const response = await axios.post(
-        `${API_URL}/stellar/transfer`,
-        {
-          receiverPublicKey: values.receiverPublicKey,
-          amount: values.amount,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axiosInstance.post(`${API_URL}/stellar/transfer`, {
+        receiverPublicKey: values.receiverPublicKey,
+        amount: values.amount,
+      });
 
       console.log("Transfer response:", response.data);
       setSuccess(`Successfully transferred ${values.amount} FUC tokens!`);

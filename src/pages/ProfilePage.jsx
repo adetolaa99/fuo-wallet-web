@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Copy, Eye, EyeOff, Loader, RefreshCw } from "lucide-react";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 import { useAuth } from "../context/AuthContext";
 import { API_URL } from "../config/api";
 
@@ -14,11 +14,7 @@ const ProfilePage = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get(`${API_URL}/users/profile`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axiosInstance.get(`${API_URL}/users/profile`);
       setProfile(response.data);
       setError(null);
     } catch (err) {
