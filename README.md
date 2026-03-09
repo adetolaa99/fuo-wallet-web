@@ -1,6 +1,6 @@
 # FUO Wallet - Frontend (Web Application)
 
-This is the web interface for the FUO Wallet. It gives users an alternative to the mobile app for managing their wallet. It allows users to sign up, fund their wallet via Paystack, check their FUC token balance, transfer tokens to other users and check their transaction history.
+This is the web interface for the FUO Wallet System. It gives users an alternative to the mobile app for managing their wallet. It allows users to sign up, fund their wallet via Paystack, check their FUC token balance, transfer tokens to other users and check their transaction history.
 It is built with React and Vite.
 
 **Related repositories:**
