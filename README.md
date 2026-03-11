@@ -3,6 +3,18 @@
 This is the web interface for the FUO Wallet System. It gives users an alternative to the mobile app for managing their wallet. It allows users to sign up, fund their wallet via Paystack, check their FUC token balance, transfer tokens to other users and check their transaction history.
 It is built with React and Vite.
 
+> **Live Demo:** [fuo-wallet-web.vercel.app](https://fuo-wallet-web.vercel.app/)
+
+---
+
+## Screenshots
+
+| Sign Up                                         | Profile                                         | Transfer                                          |
+| ----------------------------------------------- | ----------------------------------------------- | ------------------------------------------------- |
+| ![Sign Up](./assets/fuo-wallet-web-sign-up.png) | ![Profile](./assets/fuo-wallet-web-profile.png) | ![Transfer](./assets/fuo-wallet-web-transfer.png) |
+
+---
+
 **Related repositories:**
 
 - Backend (Node.js/Express): [fuo-wallet-backend](https://github.com/adetolaa99/backend-prj)
