@@ -31,10 +31,9 @@ const SignUpPage = () => {
     try {
       const response = await axiosInstance.post(
         `${API_URL}/users/signup`,
-        values
+        values,
       );
       console.log(response.data);
-      // Show success message and redirect to sign in
       alert("Account created successfully! Please sign in.");
       navigate("/signin");
     } catch (error) {
@@ -42,7 +41,7 @@ const SignUpPage = () => {
       setErrorMessage(
         error.response?.data?.message ||
           error.response?.data?.error ||
-          "You've already signed up! Please check your details and try again"
+          "You've already signed up! Please check your details and try again",
       );
     } finally {
       setLoading(false);

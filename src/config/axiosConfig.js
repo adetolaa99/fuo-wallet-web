@@ -13,7 +13,6 @@ axiosInstance.interceptors.request.use(
         const currentTime = Date.now() / 1000;
 
         if (decoded.exp <= currentTime) {
-          // Token is expired
           localStorage.removeItem("authToken");
           localStorage.removeItem("profile");
           window.location.href = "/signin";
@@ -22,7 +21,6 @@ axiosInstance.interceptors.request.use(
 
         config.headers.Authorization = `Bearer ${token}`;
       } catch (error) {
-        // Invalid token
         localStorage.removeItem("authToken");
         localStorage.removeItem("profile");
         window.location.href = "/signin";
@@ -34,7 +32,7 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 axiosInstance.interceptors.response.use(
@@ -43,14 +41,13 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 401 || error.response?.status === 403) {
-      // Token is invalid or expired
       localStorage.removeItem("authToken");
       localStorage.removeItem("profile");
       window.location.href = "/signin";
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

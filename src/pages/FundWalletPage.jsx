@@ -43,14 +43,12 @@ const FundWalletPage = () => {
       if (response.data?.data?.authorization_url) {
         setPaymentUrl(response.data.data.authorization_url);
 
-        // Open payment URL in new window
         const paymentWindow = window.open(
           response.data.data.authorization_url,
           "paystack-payment",
           "width=600,height=700,scrollbars=yes,resizable=yes"
         );
 
-        // Monitor for when the payment window closes
         const checkClosed = setInterval(() => {
           if (paymentWindow.closed) {
             clearInterval(checkClosed);

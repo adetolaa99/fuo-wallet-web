@@ -35,7 +35,7 @@ const TransactionPage = () => {
       }
 
       const response = await axiosInstance.get(
-        `${API_URL}/stellar/transactions/${userId}`
+        `${API_URL}/stellar/transactions/${userId}`,
       );
 
       setTransactions(response.data || []);
@@ -44,7 +44,7 @@ const TransactionPage = () => {
       console.error("Error fetching transactions:", error);
       setError(
         error.response?.data?.message ||
-          "Failed to fetch transactions. Please try again."
+          "Failed to fetch transactions. Please try again.",
       );
     } finally {
       setLoading(false);
@@ -85,7 +85,7 @@ const TransactionPage = () => {
   const formatAddress = (address) => {
     if (!address) return "N/A";
     return `${address.substring(0, 8)}...${address.substring(
-      address.length - 8
+      address.length - 8,
     )}`;
   };
 
@@ -115,7 +115,7 @@ const TransactionPage = () => {
       >
         <div>
           <h1 className="page-title">Transaction History</h1>
-          <p className="page-subtitle">View all your FUC token transactions</p>
+          <p className="page-subtitle">View all your outgoing transactions</p>
         </div>
         <button
           onClick={handleRefresh}
@@ -179,7 +179,7 @@ const TransactionPage = () => {
                       {
                         minimumFractionDigits: 1,
                         maximumFractionDigits: 7,
-                      }
+                      },
                     )}{" "}
                     {transaction.assetCode}
                   </div>
@@ -228,7 +228,7 @@ const TransactionPage = () => {
                         onClick={() =>
                           copyToClipboard(
                             transaction.stellarTransactionId,
-                            "Transaction ID"
+                            "Transaction ID",
                           )
                         }
                         className="copy-btn"
@@ -274,7 +274,9 @@ const TransactionPage = () => {
           border-radius: 12px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           padding: 1.5rem;
-          transition: transform 0.2s, box-shadow 0.2s;
+          transition:
+            transform 0.2s,
+            box-shadow 0.2s;
         }
 
         .transaction-card:hover {

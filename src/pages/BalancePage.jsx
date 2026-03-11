@@ -11,7 +11,6 @@ const BalancePage = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState(null);
 
-  // Mapping asset types to their display info
   const assetTypeInfo = {
     credit_alphanum4: { name: "FUC", icon: DollarSign, color: "#006400" },
     native: { name: "XLM", icon: Wallet, color: "#7c4dff" },

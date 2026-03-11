@@ -52,7 +52,6 @@ export const AuthProvider = ({ children }) => {
           }
         }
       } else {
-        // When token is expired or invalid
         logout();
       }
 
@@ -62,7 +61,6 @@ export const AuthProvider = ({ children }) => {
     initializeAuth();
   }, []);
 
-  // Check token expiration periodically
   useEffect(() => {
     if (!token) return;
 
@@ -73,7 +71,6 @@ export const AuthProvider = ({ children }) => {
       }
     };
 
-    // Check every minute
     const interval = setInterval(checkTokenExpiration, 60000);
 
     return () => clearInterval(interval);

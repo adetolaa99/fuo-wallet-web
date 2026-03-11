@@ -25,11 +25,10 @@ const ForgotPasswordPage = () => {
     try {
       const response = await axiosInstance.post(
         `${API_URL}/users/send-reset-password-email`,
-        values
+        values,
       );
 
       setMessage(response.data.message || "Reset email sent successfully!");
-      //Redirect to sign in
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
@@ -38,7 +37,7 @@ const ForgotPasswordPage = () => {
       setError(
         error.response?.data?.error ||
           error.response?.data?.message ||
-          "Something went wrong"
+          "Something went wrong",
       );
     } finally {
       setLoading(false);
