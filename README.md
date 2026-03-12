@@ -17,8 +17,8 @@ It is built with React and Vite.
 
 **Related repositories:**
 
-- Backend (Node.js/Express): [fuo-wallet-backend](https://github.com/adetolaa99/backend-prj)
-- Mobile app (React Native): [fuo-wallet-mobile](https://github.com/adetolaa99/mobile-prj)
+- Backend (Node.js/Express): [fuo-wallet-backend](https://github.com/adetolaa99/fuo-wallet-backend)
+- Mobile app (React Native): [fuo-wallet-mobile](https://github.com/adetolaa99/fuo-wallet-mobile)
 
 ---
 
